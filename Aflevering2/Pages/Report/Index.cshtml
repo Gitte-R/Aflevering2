@@ -1,0 +1,107 @@
+﻿@page
+@model Smiley.Pages.Report.IndexModel
+
+@{
+    ViewData["Title"] = "ReportList";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<label asp.for="Report.CompanyId">Filter Company by ID</label>
+
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by ID:
+            <input type="number" name="SearchID" value="@Model.currentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.idSort">
+                    @Html.DisplayNameFor(model => model.reportList[0].id)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.dateSort">
+                    @Html.DisplayNameFor(model => model.reportList[0].date)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.smileySort">
+                    @Html.DisplayNameFor(model => model.reportList[0].smileyFace)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.smileySort">
+                    @Html.DisplayNameFor(model => model.reportList[0].smileyFace)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.companyIdSort">
+                    @Html.DisplayNameFor(model => model.reportList[0].companyId)
+                </a>
+            </th>
+            <th>
+                Name of Company
+                @*@Html.DisplayNameFor(model => )*@
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.reportList) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.smileyFace)
+                </td>
+                <td>
+                    @switch (item.smileyFace)
+                    {
+                    case Smiley.Data.Models.SmileyEnum.Happy:
+                        <img src="~/images/smiley1.jpg" style="max-width:50px;width:100%" />
+                            break;
+
+                    case Smiley.Data.Models.SmileyEnum.Neutral:
+                        <img src="~/images/smiley2.jpg" style="max-width:50px;width:100%" />
+                            break;
+
+                    case Smiley.Data.Models.SmileyEnum.Sad:
+                        <img src="~/images/smiley3.jpg" style="max-width:50px;width:100%" />
+                            break;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.companyId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.companyId )
+
+                    @*Name of Company here...*@
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
