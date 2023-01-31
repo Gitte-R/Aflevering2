@@ -31,20 +31,6 @@ namespace Smiley.Pages.Report
         public Data.Models.Company reportCompany { get; set; }
         public Data.Models.Report report { get; set; }
 
-        public void getCompanyName(int _idInput)
-        {
-            allCompanies = _context.Companies.ToList();
-            reportList = _context.Reports.ToList();
-
-            foreach (var company in allCompanies)
-            {
-                if (_idInput == report.companyId)
-                {
-                    
-                }
-            }
-        }
-
         public async Task OnGetAsync(string sortOrder, string searchID)
         {
             dateSort    = sortOrder     == "Date" ? "Date_desc" : "Date";

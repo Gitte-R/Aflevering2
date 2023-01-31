@@ -34,7 +34,7 @@ namespace Smiley.Pages.Report
             return Page();
         }
 
-        public void setReportCompanyId(string _inputName)
+        public void SetReportCompanyId(string _inputName)
         {
             allCompanies = _context.Companies.ToList();
 
@@ -56,11 +56,11 @@ namespace Smiley.Pages.Report
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            //allCompanies = _context.Companies.ToList();
+            allCompanies = _context.Companies.ToList();
 
             allSmileys = (IList<SmileyEnum>)Enum.GetValues(typeof(SmileyEnum));
 
-            setReportCompanyId(reportCompany.companyName);
+            //SetReportCompanyId(reportCompany.companyName);
            
             if (!ModelState.IsValid)
             {

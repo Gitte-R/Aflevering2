@@ -18,12 +18,12 @@
                 <span asp-validation-for="report.date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="reportCompany.companyName" class="control-label">Name of Company</label>
-                <select asp-for="reportCompany.companyName" class="form-control" asp-items="ViewBag.companyName">
+                <label asp-for="report.companyId" class="control-label">Name of Company</label>
+                <select asp-for="report.companyId" class="form-control" asp-items="ViewBag.companyId">
                     <option>---Select Company---</option>
                     @foreach (var company in Model.allCompanies)
                     {
-                        <option>@company.companyName</option>
+                        <option value="@company.id">@company.companyName</option>
                     }
                 </select>
             </div>
