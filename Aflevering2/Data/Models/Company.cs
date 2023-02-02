@@ -10,6 +10,8 @@ namespace Smiley.Data.Models
 
         [Display(Name = "Name of Company")]
         public string companyName { get; set; }
+
+        [Display(Name = "Company CVR")]
         public int cvr { get; set; }
     
         [Display(Name = "Address of Company")]

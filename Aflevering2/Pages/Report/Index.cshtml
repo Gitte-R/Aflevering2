@@ -24,53 +24,36 @@
     </div>
 </form>
 
-
-
 <table class="table">
     <thead>
         <tr>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.idSort">
-                    @Html.DisplayNameFor(model => model.reportList[0].id)
-                </a>
-            </th>
-            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.dateSort">
-                    @Html.DisplayNameFor(model => model.reportList[0].date)
+                    @Html.DisplayNameFor(model => model.viewReportsList[0].date)
                 </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.viewReportsList[0].companyName)
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.smileySort">
-                    @Html.DisplayNameFor(model => model.reportList[0].smileyFace)
+                    @Html.DisplayNameFor(model => model.viewReportsList[0].smileyFace)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.smileySort">
-                    @Html.DisplayNameFor(model => model.reportList[0].smileyFace)
-                </a>
-            </th>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.companyIdSort">
-                    @Html.DisplayNameFor(model => model.reportList[0].companyId)
-                </a>
-            </th>
-            <th>
-                Name of Company
-                @*@Html.DisplayNameFor(model => )*@
+                Kontrol
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.reportList) {
+        @foreach (var item in Model.viewReportsList)
+        {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.smileyFace)
+                    @Html.DisplayFor(modelItem => item.companyName)
                 </td>
                 <td>
                     @switch (item.smileyFace)
@@ -87,14 +70,6 @@
                         <img src="~/images/smiley3.jpg" style="max-width:50px;width:100%" />
                             break;
                     }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.companyId)
-                </td>
-                <td > 
-
-                    Name of Company here...
-                    @*@Html.DisplayFor(modelItem => item.companyId )*@
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |

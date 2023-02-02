@@ -24,6 +24,8 @@ namespace Smiley.Pages.Report
         public IList<Data.Models.Company> allCompanies { get; set; }
         public IList<Data.Models.Report> allReports { get; set; }
         public IList<SmileyEnum> allSmileys { get; set; }
+        [BindProperty]
+        public Data.Models.Report report { get; set; }
 
         public IActionResult OnGet()
         {
@@ -33,25 +35,6 @@ namespace Smiley.Pages.Report
 
             return Page();
         }
-
-        public void SetReportCompanyId(string _inputName)
-        {
-            allCompanies = _context.Companies.ToList();
-
-            for (int i = 0; i < allCompanies.Count; i++)
-            {
-                if (allCompanies[i].companyName == _inputName)
-                {
-                    report.companyId = allCompanies[i].id;
-                }
-            }
-            return;
-        }
-
-        [BindProperty]
-        public Data.Models.Company reportCompany { get; set; }
-        [BindProperty]
-        public Data.Models.Report report { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
