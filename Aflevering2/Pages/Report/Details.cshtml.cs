@@ -19,7 +19,7 @@ namespace Smiley.Pages.Report
             _context = context;
         }
 
-      public Data.Models.Report Report { get; set; }
+        public Data.Models.Report Report { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

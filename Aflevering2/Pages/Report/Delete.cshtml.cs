@@ -20,7 +20,7 @@ namespace Smiley.Pages.Report
         }
 
         [BindProperty]
-      public Data.Models.Report Report { get; set; }
+        public Data.Models.Report Report { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

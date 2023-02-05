@@ -14,16 +14,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.viewCompanyList[0].companyName)
+                @Html.DisplayNameFor(model => model.viewcompany.companyName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.viewCompanyList[0].cvr)
+                @Html.DisplayNameFor(model => model.viewcompany.cvr)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.viewCompanyList[0].companyAddress)
+                @Html.DisplayNameFor(model => model.viewcompany.companyAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.viewCompanyList[0].latestSmileyFace)
+                Lastest Smiley
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.viewcompany.allSmileyReports)
             </th>
             <th></th>
         </tr>
@@ -42,20 +45,50 @@
                 @Html.DisplayFor(modelItem => item.companyAddress)
             </td>
             <td>
-                    @switch (item.latestSmileyFace)
+                @if (item.numberOfReports != 0)
+                    {
+                        @switch (item.allSmileyReports[0].smileyFace)
+                        {
+                            case Smiley.Data.Models.SmileyEnum.Happy:
+                                <img src="~/images/smiley1.jpg" style="max-width:50px;width:100%" />
+                                break;
+
+                            case Smiley.Data.Models.SmileyEnum.Neutral:
+                                <img src="~/images/smiley2.jpg" style="max-width:50px;width:100%" />
+                                break;
+
+                            case Smiley.Data.Models.SmileyEnum.Sad:
+                                <img src="~/images/smiley3.jpg" style="max-width:50px;width:100%" />
+                                break;
+                        }
+                    }
+            </td>
+            <td>
+                @if (item.numberOfReports > 1)
                 {
-                    case Smiley.Data.Models.SmileyEnum.Happy:
-                        <img src="~/images/smiley1.jpg" style="max-width:50px;width:100%" />
-                        break;
+                    for (int i = 1; i < (item.numberOfReports); i++)
+                    {
+                        if (i == 4)
+                        {
+                            break;
+                        }
 
-                    case Smiley.Data.Models.SmileyEnum.Neutral:
-                        <img src="~/images/smiley2.jpg" style="max-width:50px;width:100%" />
-                        break;
+                        switch (item.allSmileyReports[i].smileyFace)
+                        {
+                            case Smiley.Data.Models.SmileyEnum.Happy:
+                                <img src="~/images/smiley1.jpg" style="max-width:50px;width:100%" />
+                                break;
 
-                    case Smiley.Data.Models.SmileyEnum.Sad:
-                        <img src="~/images/smiley3.jpg" style="max-width:50px;width:100%" />
-                        break;
-                }
+                            case Smiley.Data.Models.SmileyEnum.Neutral:
+                                <img src="~/images/smiley2.jpg" style="max-width:50px;width:100%" />
+                                break;
+
+                            case Smiley.Data.Models.SmileyEnum.Sad:
+                                <img src="~/images/smiley3.jpg" style="max-width:50px;width:100%" />
+                                break;
+                        }
+                    }
+                }   
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |

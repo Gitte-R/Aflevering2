@@ -34,7 +34,7 @@ namespace Smiley.Pages.Report
             IQueryable<Data.Models.Report> companyReports = _context.Reports;
             currentFilter = searchID;
 
-            #region Filter table
+            #region Table filtering
             if (!String.IsNullOrEmpty(searchID))
             {
                 companyReports = companyReports.Where(s => s.companyId.ToString().Equals(searchID));
@@ -54,7 +54,6 @@ namespace Smiley.Pages.Report
 
             reportList = await companyReports.AsNoTracking().ToListAsync();
 
-            #region Generate viewReportList
             viewReportsList = new List<Data.Models.ViewReport>();
             
             foreach(var report in reportList)
@@ -77,7 +76,6 @@ namespace Smiley.Pages.Report
                 }
                 viewReportsList.Add(viewreport);
             }
-            #endregion
         }
     }
 }

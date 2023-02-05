@@ -43,8 +43,6 @@ namespace Smiley.Pages.Report
 
             allSmileys = (IList<SmileyEnum>)Enum.GetValues(typeof(SmileyEnum));
 
-            //SetReportCompanyId(reportCompany.companyName);
-           
             if (!ModelState.IsValid)
             {
                 return Page();
